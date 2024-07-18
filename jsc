@@ -1,0 +1,27 @@
+const express = require('express');
+const bodyParser = require('body-parser');
+const app = express();
+const port = 3000;
+
+// Middleware
+app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.json());
+
+// Routes
+app.post('/bookAppointment', (req, res) => {
+    // Example: Process appointment booking (save to database, etc.)
+    let patientName = req.body.patientName;
+    let doctor = req.body.doctor;
+    let appointmentDate = req.body.appointmentDate;
+    let appointmentTime = req.body.appointmentTime;
+
+    // Here you would typically save this data to a database
+
+    // Send response
+    res.send('Appointment booked successfully!');
+});
+
+// Start server
+app.listen(port, () => {
+    console.log(`Server running at http://localhost:${port}`);
+});
